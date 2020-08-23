@@ -52,7 +52,7 @@
         <!-- CANVAS -->
         <?php
             echo <<<HEAD
-            <canvas id="canvas" width="1000" height="1000"></canvas>
+            <canvas id="canvas" width="500" height="1000"></canvas>
             <script>
                 var canvas = document.getElementById("canvas");
                 if (canvas.getContext){
