@@ -8,6 +8,9 @@ class Adder {
         $result = array();
         $c = array();
 
+        foreach ($in1 as $v) { $in1[] = (int)$v; }
+        foreach ($in2 as $v) { $in2[] = (int)$v; }
+
         //0bit目
         $result[0] = HalfAdder::sum($in1[0], $in2[0]);
         $c[0] = HalfAdder::carry($in1[0], $in2[0]);
