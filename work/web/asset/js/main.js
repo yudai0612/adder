@@ -1,10 +1,13 @@
-var selected = document.querySelector('select');
+var select = document.querySelector('select');
+
 const ckbxWraps = [];
 ckbxWraps[0] = document.getElementById('ckbxWrap0');
 ckbxWraps[1] = document.getElementById('ckbxWrap1');
 
-selected.addEventListener('input', ()=>{
-    var bit = selected.value;
+
+select.addEventListener('input', ()=>{
+    var bit = select.value;
+    document.querySelector("input[type='hidden']").value = bit;
 
     ckbxWraps.forEach( ckbxWrap => {
         while(ckbxWrap.firstChild) ckbxWrap.removeChild(ckbxWrap.firstChild);
@@ -24,7 +27,7 @@ selected.addEventListener('input', ()=>{
 
 ckbxWraps.forEach( ckbxWrap => {
     ckbxWrap.addEventListener('click', ()=>{
-        var bit = selected.value;
+        var bit = select.value;
         for(var i=bit-1; i>=0; i--){
             var ck = [];
             switch (ckbxWrap.id) {
