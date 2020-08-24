@@ -1,17 +1,21 @@
 <?php
 
-class HalfAdder {
+class HalfAdder extends Adder {
+    public $x = 200;
+    public $y = 30;
 
-    public $x, $y;
-    public function sum($in1, $in2) {
-        return $in1 ^ $in2;
+    public function sum($i1, $i2) {
+        return $i1 ^ $i2;
     }
 
-    public function carry($in1, $in2) {
-        return $in1 && $in2;
+    public function carry($i1, $i2) {
+        return $i1 && $i2;
     }
 
-    public function draw($x, $y) {
+    public function draw() {
+        $x = $this->x;
+        $y = $this->y;
+        
         echo <<<HA
                 ctx.strokeRect($x, $y, 80, 80);
                 ctx.fillText("H.A",  $x+28,  $y+40);
@@ -20,8 +24,5 @@ class HalfAdder {
                 ctx.fillText("i1",   $x,     $y+40);
                 ctx.fillText("i2",   $x,     $y+60);\n
         HA;
-
-        $this->x = $x;
-        $this->y = $y;
     }
 }

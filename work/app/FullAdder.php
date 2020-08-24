@@ -1,22 +1,35 @@
 <?php
 require_once('HalfAdder.php');
 
-class FullAdder {
+class FullAdder extends Adder {
 
-    public $x, $y;
+    protected static $cnt = 0;
+    public $x = 200;
+    public $y = 30;
 
-    public function sum($in1, $in2, $c) {
-        return HalfAdder::sum(HalfAdder::sum($in1, $in2), $c);
+    public function __construct() {
+        self::$cnt++;
+        $this->y += (100 * self::$cnt);
     }
 
-    public function carry($in1, $in2, $c) {
-        return  HalfAdder::carry(HalfAdder::sum($in1, $in2), $c)
-                || HalfAdder::carry($in1, $in2);
+    public static function getCnt(){
+        return self::$cnt;
     }
 
-    public function draw($x, $y) {
+    public function sum($i1, $i2, $Ci) {
+        return HalfAdder::sum( HalfAdder::sum($i1, $i2), $Ci );
+    }
+
+    public function carry($i1, $i2, $Ci) {
+        return  HalfAdder::carry( HalfAdder::sum($i1, $i2), $Ci )
+                || HalfAdder::carry($i1, $i2);
+    }
+
+    public function draw() {
+        $x = $this->x;
+        $y = $this->y;
+        
         echo <<<FA
-                var p =  {x:$x, y:$y};
                 ctx.strokeRect($x, $y, 80, 80);
                 ctx.fillText("F.A",  $x+28,  $y+40);
                 ctx.fillText("Ci",      $x,     $y+20);
@@ -25,8 +38,5 @@ class FullAdder {
                 ctx.fillText("i1",      $x,     $y+40);
                 ctx.fillText("i2",      $x,     $y+60);\n
         FA;
-
-        $this->x = $x;
-        $this->y = $y;
     }
 }

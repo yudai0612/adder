@@ -1,6 +1,6 @@
 <?php
     require_once('../app/Adder.php');
-    require_once('../app/functions.php');
+    require_once('../app/MultibitAdder.php');
     const MAX_BIT = 8;
     $x = $_REQUEST['former'];
     $y = $_REQUEST['latter'];
@@ -25,6 +25,7 @@
             <div> <!-- 入力のbit数を貰うためのselectタグ -->
                 <div class="label">入力bit数</div>
                 <select name="bit">
+                    <option value="1">...</option>
                     <?php for($i=1; $i<=MAX_BIT; $i++) : ?>
                         <option value="<?=$i?>"><?= $i ?></option>
                     <?php endfor; ?>
@@ -48,6 +49,8 @@
             </p>
         </div>
 
+        <p><?php print_r( MultibitAdder::exec($x, $y) ); ?></p>
+
         <script src="asset/js/main.js"></script>
 
         <!-- CANVAS -->
@@ -58,13 +61,14 @@
                 var canvas = document.getElementById("canvas");
                 if (canvas.getContext){
                     var ctx = canvas.getContext('2d');
+                    ctx.strokeStyle = 'gray';
                     ctx.fillStyle = 'gray';
                     ctx.font = "12px 'Source Code Pro'";\n
             HEAD;
 
             for($i=0; $i<$_REQUEST['bit']; $i++) {
-                $adders[$i]->draw(200, 30+(100*$i));
-                drawBus( $adders[$i] , !($i==$_REQUEST['bit']-1) );
+                $adders[$i]->draw();
+                $adders[$i]->drawBus( !($i==$_REQUEST['bit']-1) );
             }
 
             echo <<<FOOT
