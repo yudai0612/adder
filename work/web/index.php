@@ -1,5 +1,6 @@
 <?php
     require_once('../app/Adder.php');
+    require_once('../app/functions.php');
     const MAX_BIT = 8;
     $x = $_REQUEST['former'];
     $y = $_REQUEST['latter'];
@@ -57,11 +58,13 @@
                 var canvas = document.getElementById("canvas");
                 if (canvas.getContext){
                     var ctx = canvas.getContext('2d');
-                    ctx.fillStyle = 'gray';\n
+                    ctx.fillStyle = 'gray';
+                    ctx.font = "12px 'Source Code Pro'";\n
             HEAD;
 
             for($i=0; $i<$_REQUEST['bit']; $i++) {
-                $adders[$i]->show(200, 30+(100*$i));
+                $adders[$i]->draw(200, 30+(100*$i));
+                drawBus( $adders[$i] , !($i==$_REQUEST['bit']-1) );
             }
 
             echo <<<FOOT
