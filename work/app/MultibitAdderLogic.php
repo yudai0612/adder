@@ -2,7 +2,7 @@
 require_once('HalfAdder.php');
 require_once('FullAdder.php');
 
-class MultibitAdder {
+class MultibitAdderLogic {
     static function exec($i1, $i2) {
         $length = max( count($i1), count($i2) );
         $result = array();

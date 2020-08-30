@@ -11,13 +11,13 @@ select.addEventListener('input', ()=>{
 
     ckbxWraps.forEach( ckbxWrap => {
         while(ckbxWrap.firstChild) ckbxWrap.removeChild(ckbxWrap.firstChild);
-        for(var i=bit-1; i>=0; i--){
+        for(var j=bit-1; j>=0; j--){
             const ckbx = document.createElement('input');
             ckbx.type = 'checkbox';
 
             switch (ckbxWrap.id) {
-                case 'ckbxWrap0': ckbx.id = `former${i}`; break;
-                case 'ckbxWrap1': ckbx.id = `latter${i}`; break;
+                case 'ckbxWrap0': ckbx.id = `former${j}`; break;
+                case 'ckbxWrap1': ckbx.id = `latter${j}`; break;
                 default: break;
             }
             ckbxWrap.appendChild(ckbx);
@@ -28,23 +28,23 @@ select.addEventListener('input', ()=>{
 ckbxWraps.forEach( ckbxWrap => {
     ckbxWrap.addEventListener('click', ()=>{
         var bit = select.value;
-        for(var i=bit-1; i>=0; i--){
+        for(var j=bit-1; j>=0; j--){
             var ck = [];
             switch (ckbxWrap.id) {
                 case 'ckbxWrap0':
-                    ck[i] = document.getElementById(`former${i}`);
-                    ck[i].name = `former[]`;
+                    ck[j] = document.getElementById(`former${j}`);
+                    ck[j].name = `former[]`;
                     break; 
                 case 'ckbxWrap1':
-                    ck[i] = document.getElementById(`latter${i}`);
-                    ck[i].name = `latter[]`;
+                    ck[j] = document.getElementById(`latter${j}`);
+                    ck[j].name = `latter[]`;
                     break;
                 default:
                     break; 
             }
             var arr = [];
-            arr.push( Number(ck[i].checked) );
-            ck[i].value = arr; 
+            arr.push( Number(ck[j].checked) );
+            ck[j].value = arr; 
         }
     });
 });

@@ -1,19 +1,19 @@
 <?php
     require_once('../app/Adder.php');
-    require_once('../app/MultibitAdder.php');
+    require_once('../app/MultibitAdderLogic.php');
     const MAX_BIT = 8;
-    $x = $_REQUEST['former'];
-    $y = $_REQUEST['latter'];
+    $a = $_REQUEST['former'];
+    $b = $_REQUEST['latter'];
 
     $adders = [];
     $adders[0] = new HalfAdder();
-    for($i=1; $i<$_REQUEST['bit']; $i++) {
-        $adders[$i] = new FullAdder();
+    for($j=1; $j<$_REQUEST['bit']; $j++) {
+        $adders[$j] = new FullAdder();
     }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
     <head>
         <meta charset="UTF-8">
         <link href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic" rel="stylesheet">
@@ -26,8 +26,8 @@
                 <div class="label">入力bit数</div>
                 <select name="bit">
                     <option value="1">...</option>
-                    <?php for($i=1; $i<=MAX_BIT; $i++) : ?>
-                        <option value="<?=$i?>"><?= $i ?></option>
+                    <?php for($j=1; $j<=MAX_BIT; $j++) : ?>
+                        <option value="<?=$j?>"><?= $j ?></option>
                     <?php endfor; ?>
                 <select>
                     </div>
@@ -39,7 +39,7 @@
                         <input type="submit" value="RUN">
                     </div>
                     <div>
-                        <div id="digit"><?php for($i=MAX_BIT-1; $i>=0; $i--){echo "<span class=\"n\">$i</span>";} ?></div>
+                        <div id="digit"><?php for($j=MAX_BIT-1; $j>=0; $j--){echo "<span class=\"n\">$j</span>";} ?></div>
                         <div id="ckbxWrap0"></div>
                         <div id="ckbxWrap1"></div>
                         <div class="hissan">+)</div>
@@ -49,7 +49,7 @@
             </p>
         </div>
 
-        <p><?php print_r( MultibitAdder::exec($x, $y) ); ?></p>
+        <p><?php print_r( MultibitAdderLogic::exec($a, $b) ); ?></p>
 
         <script src="asset/js/main.js"></script>
 
@@ -66,9 +66,9 @@
                     ctx.font = "12px 'Source Code Pro'";\n
             HEAD;
 
-            for($i=0; $i<$_REQUEST['bit']; $i++) {
-                $adders[$i]->draw();
-                $adders[$i]->drawBus( !($i==$_REQUEST['bit']-1) );
+            for($j=0; $j<$_REQUEST['bit']; $j++) {
+                $adders[$j]->draw();
+                $adders[$j]->drawBus( !($j==$_REQUEST['bit']-1) );
             }
 
             echo <<<FOOT
