@@ -1,0 +1,89 @@
+body {
+    font-family: "Sawarabi Gothic";
+    font-size: 12px;
+    width: 500px; 
+    margin: 0 auto;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 2px dashed gray;
+}
+
+.label {
+    padding: 4px 10px;
+    text-align: center;
+    color: gray;
+}
+
+select{
+    width: 100px;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 5px;
+    background-color: gray;
+    color: white;
+    border: 2px solid gray;
+}
+
+select:hover {
+    width: 100px;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 5px;
+    background-color: white;
+    color: gray;
+    border: 2px solid gray;
+}
+
+form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 350px;
+    height: 100px; 
+    margin: 10px;
+}
+
+#ckbxWrap0, #ckbxWrap1, #digit{
+    width: 15em;
+    height: 1.5em;
+    margin-top: 2px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hissan{
+    width: 100%;
+    color: gray;
+    border-bottom: 2px solid gray;
+}
+
+.n {
+    color: gray;
+    width: 13px;
+    margin: 3px 3px 3px 4px;
+    text-align: center;
+}
+
+input[type='submit'] {
+    border-radius: 5px;
+    color: white;
+    padding: 4px 10px;
+    width: 100%; 
+    border: 2px solid gray;
+    background-color: gray;
+}
+
+input[type='submit']:hover {
+    border-radius: 5px;
+    color: gray;
+    padding: 4px 10px;
+    width: 100%; 
+    border: 2px solid gray;
+    background-color: white;
+}
+
